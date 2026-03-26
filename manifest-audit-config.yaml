@@ -1,0 +1,58 @@
+# Android Manifest Auditor Configuration
+# This file allows you to customize rule severity and disable specific rules
+
+# Global settings
+global:
+  # Minimum target SDK version to recommend
+  min_target_sdk: 33
+  # Maximum allowed min SDK version before warning
+  max_min_sdk_warning: 26
+
+# Rule severity overrides
+# Possible values: error, warning, info, disabled
+rules:
+  # Deep link rules
+  deeplink.missing_default_category: warning
+  deeplink.missing_browsable_category: error
+  deeplink.missing_scheme: error
+  deeplink.missing_path_specification: warning
+  deeplink.invalid_host_characters: error
+  deeplink.duplicate_host_scheme: warning
+  deeplink.http_without_autoverify: warning
+  
+  # Component rules
+  component.missing_exported: error
+  
+  # Permission rules
+  permission.rationale_hint: info
+  permission.internet_note: info
+  
+  # SDK rules
+  sdk.outdated_target_sdk: warning
+  sdk.very_old_target_sdk: error
+  sdk.missing_target_sdk: error
+  sdk.invalid_target_sdk_format: error
+  sdk.high_min_sdk: warning
+  sdk.low_min_sdk_implications: info
+  sdk.invalid_min_sdk_format: error
+  sdk.large_version_gap: info
+  sdk.missing_uses_sdk: warning
+  
+  # Manifest rules
+  manifest.missing_application: error
+  manifest.empty_package: info
+  manifest.parse_error: error
+  file.not_found: error
+
+# Custom permissions to flag as dangerous
+# Add any additional permissions you want to track
+custom_dangerous_permissions:
+  "com.company.permission.CUSTOM_SENSITIVE": "custom sensitive data"
+  "android.permission.READ_MEDIA_IMAGES": "media access"
+
+# Paths to ignore during auto-discovery
+ignore_paths:
+  - "build/"
+  - ".git/"
+  - "node_modules/"
+  - "vendor/"

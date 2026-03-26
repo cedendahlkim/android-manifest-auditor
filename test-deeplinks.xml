@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.test">
+
+    <application android:label="Test">
+        <!-- Activity 1: Missing path spec -->
+        <activity android:name=".Activity1" android:exported="true">
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="example.com" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Activity 2: Invalid host -->
+        <activity android:name=".Activity2" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="example .com" />
+            </intent-filter>
+        </activity>
+        
+        <!-- Activity 3: Duplicate config -->
+        <activity android:name=".Activity3" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="duplicate.com" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name=".Activity4" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="duplicate.com" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>
